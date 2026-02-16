@@ -63,6 +63,19 @@ void timerCallback(int value) {
     }
     else {
         std::printf("Simulation finished at iteration %d: sum=%f\n", ctx->iteration, ctx->sum);
+        // print final temperature grid
+        int M = ctx->params->M;
+        int N = ctx->params->N;
+        size_t rows = (size_t)M + 2;
+        size_t cols = (size_t)N + 2;
+        std::printf("Final temperature grid (in Celsius):\n");
+        for (size_t i = 1; i <= M; i++) {
+            for (size_t j = 1; j <= N; j++) {
+                double temp_celsius = ctx->h_a[i * cols + j] - 273.15;
+                std::printf("%6.2f ", temp_celsius);
+            }
+            std::printf("\n");
+        }
         // Stop the GLUT main loop so cleanup in main() runs
         glutLeaveMainLoop();
     }

@@ -88,12 +88,9 @@ void initializeSimulation(SimulationContext* ctx) {
     size_t cells = rows * cols;
 
     initializeHostMemory(ctx);
-
-    // GPU device allocations + initial copies (kernel.cu)
     initializeDeviceMemory(ctx->h_a, ctx->h_b, ctx->h_diff, ctx->h_RGB, cells, M, N);
 
     ctx->PixelBuffer = new GLubyte[M * N * 3];
-
     ctx->sum = ctx->params->epsilon + 1.0;
     ctx->iteration = 0;
 }
