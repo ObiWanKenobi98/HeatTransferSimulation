@@ -11,7 +11,7 @@ The simulation treats a metal plate as an $M \times N$ matrix. Starting from an 
 heat source ($T_S$) is introduced at a specific coordinate $(x_0, y_0)$.
 The propagation of heat is calculated iteratively using a 3x3 mean filter. The temperature of a point at time $t+1$ is the average of itself and its eight immediate neighbors at time $t$:
 
-$$P[x,y](t+1) = \frac{1}{9} \sum_{i=-1}^{1} \sum_{j=-1}^{1} P[x+j, y+i](t)$$
+$P[x,y](t+1) = \frac{1}{9} \sum_{i=-1}^{1} \sum_{j=-1}^{1} P[x+j, y+i](t)$
 
 This calculation represents a discrete convolution where each cell's new state depends on the local 3x3 neighborhood.
 
